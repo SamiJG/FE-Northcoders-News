@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import logoImg from '../images/northcoders-news-logo-whitetext.png';
 // import './App.css';
 
 class Header extends Component {
   render() {
     return (
       <div className="header">
-        <h1>Title</h1>
-        <span>NC news logo</span>
+        <img
+          id="nc-news-logo-banner"
+          src={logoImg}
+          alt="northcoders news logo"
+        />
       </div>
     );
   }
