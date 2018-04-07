@@ -1,20 +1,16 @@
+body {
+  background-color: black;
+}
+
 .App {
   text-align: center;
+  background-color: black;
+  color: whitesmoke;
   margin: 5px;
 }
-.header {
-  border: 1px solid red;
-  margin: 5px;
-}
-.navbar {
-  border: 1px solid green;
-  margin: 5px;
-}
-.body {
-  border: 1px solid blue;
-  margin: 5px;
-}
-.footer {
-  border: 1px solid blueviolet;
-  margin: 5px;
+
+#nc-news-logo-banner {
+  margin-top: 20px;
+  height: 200px;
+  width: auto;
 }
