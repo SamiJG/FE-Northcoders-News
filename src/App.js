@@ -5,6 +5,7 @@ import Route from 'react-router-dom/Route';
 import Navbar from './components/Navbar';
 import Homepage from './components/Homepage';
 import TopicPage from './components/TopicPage';
+import ArticleAndCommentsPage from './components/ArticleAndCommentsPage';
 import Footer from './components/Footer';
 
 class App extends Component {
@@ -15,6 +16,11 @@ class App extends Component {
           <Navbar />
           <Route exact path="/" component={Homepage} />
           <Route exact path="/topics/:topic" component={TopicPage} />
+          <Route
+            exact
+            path="/articles/:articleId"
+            component={ArticleAndCommentsPage}
+          />
           <Footer />
         </div>
       </Router>
@@ -23,3 +29,5 @@ class App extends Component {
 }
 
 export default App;
+
+//this.props.children

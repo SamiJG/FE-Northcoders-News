@@ -19,32 +19,31 @@ class Articles extends Component {
           .sort((a, b) => b.votes - a.votes)
           .map(
             (article, i) =>
-              i < 10 ? <Article article={article} key={i} /> : ''
+              i < 10 ? <Article article={article} key={article._id} /> : ''
           )}
       </div>
     );
   };
 
-  getArticlesByTopic = (articles, location) => {
-    const topic = location.pathname.split('/').reverse()[0];
-    console.log(articles);
+  getArticlesByTopic = (articles, topic) => {
     return (
       <div>
-        <h4>{topic}</h4>
-        {articles.filter()}
+        {articles
+          .filter(article => article.topic === topic)
+          .map(article => <Article article={article} key={article._id} />)}
       </div>
     );
   };
 
   render() {
     const { articles } = this.state;
-    const { location } = this.props;
-
+    const { match } = this.props;
+    const topic = match.params.topic;
     return (
-      <div className="Articles col-md-9">
-        {location.pathname === '/' && this.getTopTenArticles(articles)}
-        {/^\/topics\//.test(location.pathname) &&
-          this.getArticlesByTopic(articles, location)}
+      <div className="articles col-md-9">
+        {match.path === '/' && this.getTopTenArticles(articles)}
+        {/^\/topics\//.test(match.path) &&
+          this.getArticlesByTopic(articles, topic)}
       </div>
     );
   }

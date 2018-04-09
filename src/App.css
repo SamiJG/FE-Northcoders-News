@@ -1,16 +1,17 @@
-body {
-  background-color: black;
+.container {
+  margin: 0;
 }
 
-.App {
-  text-align: center;
-  background-color: black;
-  color: whitesmoke;
-  margin: 5px;
-}
-
-#nc-news-logo-banner {
-  margin-top: 20px;
+.header {
+  margin-top: 30px;
   height: 200px;
-  width: auto;
+}
+
+.top-banner {
+  height: 100%;
+}
+
+.user-avatar-thumbnail {
+  width: 60px;
+  height: 60px;
 }

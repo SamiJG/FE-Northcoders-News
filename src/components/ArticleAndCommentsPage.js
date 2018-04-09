@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import TopicPageHeader from './TopicPageHeader';
+import HomepageHeader from './HomepageHeader';
 // import FilterBar from './FilterBar';
-import Articles from './Articles';
+import Comments from './Comments';
 import Login from './Login';
 
-class TopicPage extends Component {
+class ArticleAndCommentPage extends Component {
   render() {
     const { match } = this.props;
     return (
-      <div className="topic-page">
+      <div className="article-and-comments-page">
         <div>
-          <TopicPageHeader match={match} />
+          <HomepageHeader />
         </div>
         {/* <FilterBar /> */}
         <div className="container-fluid row">
-          <Articles match={match} />
+          <Comments match={match} />
           <Login />
         </div>
       </div>
@@ -22,4 +22,4 @@ class TopicPage extends Component {
   }
 }
 
-export default TopicPage;
+export default ArticleAndCommentPage;

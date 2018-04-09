@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import moment from 'moment';
 import API from './api';
 import Voter from './Voter';
 
-class Article extends Component {
+class ArticleWithBody extends Component {
   state = {
     users: []
   };
@@ -14,17 +12,19 @@ class Article extends Component {
   }
 
   render() {
-    const { title, _id, created_by, comments, created_at } = this.props.article;
+    const { title, _id, created_by, body } = this.props.article;
+    const commentCount = this.props.commentCount;
     const { users } = this.state;
     const timeSincePosted = 'sometime';
     const userImage =
-      users[0] && users.find(user => user.username === created_by).avatar_url;
+      users[0] &&
+      users.find(user => user.username === created_by.username).avatar_url;
     return (
       <div
         className="article text-left border border-warning container-fluid row "
         key={_id}
       >
-        <Voter articleId={_id} />
+        <Voter articleWithBodyId={_id} />
         <img
           className="user-avatar-thumbnail align-self-center m-2"
           src={userImage}
@@ -34,15 +34,16 @@ class Article extends Component {
           }}
         />
         <div>
+          <p>{title}</p>
+          <p>{body}</p>
           <p>
-            <NavLink to={`/articles/${_id}`}>{title}</NavLink>
+            {`${commentCount} comments`} |{' '}
+            {`Submitted ${timeSincePosted} ago by ${created_by.username}`}
           </p>
-          <p>{`Submitted ${moment(created_at).fromNow()} by ${created_by}`}</p>
-          <p>{`${comments} comments`}</p>
         </div>
       </div>
     );
   }
 }
 
-export default Article;
+export default ArticleWithBody;

@@ -13,7 +13,7 @@ class Navbar extends Component {
   render() {
     const { topics } = this.state;
     return (
-      <div className="topic-bar fixed-top">
+      <div className="topic-bar fixed-top bg-dark">
         <Topics topics={topics} />
       </div>
     );

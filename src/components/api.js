@@ -5,7 +5,7 @@ const API = {
   fetchTopics: () => {
     return axios.get(`${API_ROUTE}/topics`).then(topics => topics.data.topics);
   },
-  fetchTopicAndArticles: topic => {
+  fetchArticlesForTopic: topic => {
     return axios
       .get(`${API_ROUTE}/topics/${topic}/articles`)
       .then(response => response.data);
@@ -21,8 +21,28 @@ const API = {
       .then(response => response.data);
   },
   addArticle: () => {},
-  voteArticle: () => {},
-  voteComment: () => {},
+
+  voteArticleUp: articleId => {
+    return axios
+      .put(`${API_ROUTE}/articles/${articleId}?vote=up`)
+      .then(updatedArticle => updatedArticle.data.votes);
+  },
+
+  voteArticleDown: articleId => {
+    return axios
+      .put(`${API_ROUTE}/articles/${articleId}?vote=down`)
+      .then(updatedArticle => updatedArticle.data.votes);
+  },
+  voteCommentUp: commentId => {
+    return axios
+      .put(`${API_ROUTE}/comments/${commentId}?vote=up`)
+      .then(updatedComment => updatedComment.data.votes);
+  },
+  voteCommentDown: commentId => {
+    return axios
+      .put(`${API_ROUTE}/comments/${commentId}?vote=down`)
+      .then(updatedComment => updatedComment.data.votes);
+  },
   deleteComment: () => {},
   fetchUsers: () => {
     return axios.get(`${API_ROUTE}/users`).then(users => users.data.users);
