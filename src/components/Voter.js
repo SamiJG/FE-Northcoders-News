@@ -4,27 +4,49 @@ import API from './api';
 
 class Voter extends Component {
   state = {
-    votes: 0
+    votes: this.props.votes
   };
 
-  handleClick = e => {
-    const voteUpOrDown = e.target.parentElement.parentElement.className.split(
-      '-'
-    )[1];
-    // if (voteUpOrDown === 'up') voteUp(id);
-    // if (voteUpOrDown === 'down') voteUpOrDown(id);
+  voteUp = (id, type) => {
+    if (type === 'article')
+      API.voteArticleUp(id).then(votes =>
+        this.setState({
+          votes: votes
+        })
+      );
+    if (type === 'comment')
+      API.voteCommentUp(id).then(votes =>
+        this.setState({
+          votes: votes
+        })
+      );
+  };
+
+  voteDown = (id, type) => {
+    if (type === 'article')
+      API.voteArticleDown(id).then(votes =>
+        this.setState({
+          votes: votes
+        })
+      );
+    if (type === 'comment')
+      API.voteCommentDown(id).then(votes =>
+        this.setState({
+          votes: votes
+        })
+      );
   };
 
   render() {
+    const { id, type, votes } = this.props;
     return (
       <div className="voter align-self-center d-block">
-        <div>
-          <i onClick={this.handleClick} className="vote-up " />
-          <i className="fa fa-thumbs-up" />
+        <div onClick={() => this.voteUp(id, type)}>
+          <i className="fa fa-thumbs-up text-success" />
         </div>
         {this.state.votes}
-        <div onClick={this.handleClick} className="vote-down">
-          <i className="fa fa-thumbs-down" />
+        <div onClick={() => this.voteDown(id, type)} className="vote-down">
+          <i className="fa fa-thumbs-down text-danger" />
         </div>
       </div>
     );
@@ -32,19 +54,3 @@ class Voter extends Component {
 }
 
 export default Voter;
-
-function voteUp(id) {
-  API.voteArticleUp(id).then(votes =>
-    this.setState({
-      votes: votes
-    })
-  );
-}
-
-function voteUp(id) {
-  API.voteArticleUp(id).then(votes =>
-    this.setState({
-      votes: votes
-    })
-  );
-}

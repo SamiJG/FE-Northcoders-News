@@ -13,7 +13,7 @@ class Comment extends Component {
   }
 
   render() {
-    const { created_by, _id, created_at, body } = this.props.comment;
+    const { created_by, _id, created_at, body, votes } = this.props.comment;
     const { users } = this.state;
     const timeSincePosted = 'sometime';
     return (
@@ -21,7 +21,7 @@ class Comment extends Component {
         className="comment text-left border border-warning container-fluid row "
         key={_id}
       >
-        <Voter commentId={_id} />
+        <Voter id={_id} type="comment" votes={votes} />
 
         <div>
           <p>{`${created_by.username} | ${moment(created_at).fromNow()}`}</p>

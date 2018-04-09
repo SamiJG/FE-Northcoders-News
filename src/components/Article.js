@@ -14,7 +14,14 @@ class Article extends Component {
   }
 
   render() {
-    const { title, _id, created_by, comments, created_at } = this.props.article;
+    const {
+      title,
+      _id,
+      created_by,
+      comments,
+      created_at,
+      votes
+    } = this.props.article;
     const { users } = this.state;
     const timeSincePosted = 'sometime';
     const userImage =
@@ -24,7 +31,7 @@ class Article extends Component {
         className="article text-left border border-warning container-fluid row "
         key={_id}
       >
-        <Voter articleId={_id} />
+        <Voter id={_id} type="article" votes={votes} />
         <img
           className="user-avatar-thumbnail align-self-center m-2"
           src={userImage}

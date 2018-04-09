@@ -12,7 +12,7 @@ class ArticleWithBody extends Component {
   }
 
   render() {
-    const { title, _id, created_by, body } = this.props.article;
+    const { title, _id, created_by, body, votes } = this.props.article;
     const commentCount = this.props.commentCount;
     const { users } = this.state;
     const timeSincePosted = 'sometime';
@@ -24,7 +24,7 @@ class ArticleWithBody extends Component {
         className="article text-left border border-warning container-fluid row "
         key={_id}
       >
-        <Voter articleWithBodyId={_id} />
+        <Voter id={_id} type="article" votes={votes} />
         <img
           className="user-avatar-thumbnail align-self-center m-2"
           src={userImage}
