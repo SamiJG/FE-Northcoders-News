@@ -35,7 +35,13 @@ class Comments extends Component {
         <h4 className="bg-dark text-light">Comments</h4>
         {comments
           .sort((a, b) => b.created_at - a.created_at)
-          .map(comment => <Comment comment={comment} key={comment._id} />)}
+          .map(comment => (
+            <Comment
+              comment={comment}
+              key={comment._id}
+              refreshComments={this.fetchArticleAndComments}
+            />
+          ))}
       </div>
     ) : null;
   }

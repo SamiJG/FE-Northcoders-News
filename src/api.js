@@ -34,7 +34,12 @@ const API = {
       .then(updatedVote => updatedVote.data.votes);
   },
 
-  deleteComment: () => {},
+  deleteComment: commentId => {
+    return axios
+      .delete(`${API_ROUTE}/comments/${commentId}`)
+      .then(response => response);
+  },
+
   fetchUsers: () => {
     return axios.get(`${API_ROUTE}/users`).then(users => users.data.users);
   },

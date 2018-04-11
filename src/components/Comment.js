@@ -11,6 +11,9 @@ class Comment extends Component {
   componentDidMount() {
     API.fetchUsers().then(users => this.setState({ users: users }));
   }
+  deleteComment = commentId => {
+    API.deleteComment(commentId).then(data => this.props.refreshComments());
+  };
 
   render() {
     const { created_by, _id, created_at, body, votes } = this.props.comment;
@@ -24,7 +27,14 @@ class Comment extends Component {
         <Voter id={_id} type="comment" votes={votes} />
 
         <div>
+          <button
+            className="float-right"
+            onClick={() => this.deleteComment(_id)}
+          >
+            &times;
+          </button>
           <p>{`${created_by.username} | ${moment(created_at).fromNow()}`}</p>
+
           <p>{body}</p>
         </div>
       </div>
