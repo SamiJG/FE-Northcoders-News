@@ -10,14 +10,14 @@ class Comments extends Component {
     comments: []
   };
   componentDidMount() {
-    const { articleId } = this.props.match.params;
-    API.fetchArticleAndComments(articleId).then(data => {
-      this.setState({
-        article: data.article,
-        comments: data.comments
-      });
-    });
+    this.fetchArticleAndComments();
   }
+  fetchArticleAndComments = () => {
+    const { articleId } = this.props.match.params;
+    return API.fetchArticleAndComments(articleId).then(data => {
+      this.setState({ article: data.article, comments: data.comments });
+    });
+  };
 
   render() {
     const { article, comments } = this.state;
@@ -26,7 +26,11 @@ class Comments extends Component {
     return comments[0] ? (
       <div className="article-and-comments col-md-9">
         <div className="single-article bg-warning">
-          <ArticleWithBody article={article} commentCount={commentCount} />
+          <ArticleWithBody
+            article={article}
+            commentCount={commentCount}
+            refreshComments={this.fetchArticleAndComments}
+          />
         </div>
         <h4 className="bg-dark text-light">Comments</h4>
         {comments

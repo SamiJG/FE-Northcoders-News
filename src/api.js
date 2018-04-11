@@ -20,7 +20,13 @@ const API = {
       .get(`${API_ROUTE}/articles/${articleId}/comments`)
       .then(response => response.data);
   },
-  addArticle: () => {},
+  addComment: (articleId, comment) => {
+    return axios({
+      method: 'post',
+      url: `${API_ROUTE}/articles/${articleId}/comments`,
+      data: comment
+    }).then(response => response);
+  },
 
   changeVote: (id, type, direction) => {
     return axios
