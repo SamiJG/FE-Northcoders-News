@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
-import API from './api';
+import API from '../api';
 import Voter from './Voter';
 
 class Article extends Component {
