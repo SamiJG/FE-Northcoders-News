@@ -7,45 +7,26 @@ class Voter extends Component {
     votes: this.props.votes
   };
 
-  voteUp = (id, type) => {
-    if (type === 'article')
-      API.voteArticleUp(id).then(votes =>
-        this.setState({
-          votes: votes
-        })
-      );
-    if (type === 'comment')
-      API.voteCommentUp(id).then(votes =>
-        this.setState({
-          votes: votes
-        })
-      );
-  };
-
-  voteDown = (id, type) => {
-    if (type === 'article')
-      API.voteArticleDown(id).then(votes =>
-        this.setState({
-          votes: votes
-        })
-      );
-    if (type === 'comment')
-      API.voteCommentDown(id).then(votes =>
-        this.setState({
-          votes: votes
-        })
-      );
+  updateVote = (id, type, direction) => {
+    API.changeVote(id, type, direction).then(votes =>
+      this.setState({
+        votes: votes
+      })
+    );
   };
 
   render() {
     const { id, type, votes } = this.props;
     return (
       <div className="voter align-self-center d-block">
-        <div onClick={() => this.voteUp(id, type)}>
+        <div onClick={() => this.updateVote(id, type, 'up')}>
           <i className="fa fa-thumbs-up text-success" />
         </div>
         {this.state.votes}
-        <div onClick={() => this.voteDown(id, type)} className="vote-down">
+        <div
+          onClick={() => this.updateVote(id, type, 'down')}
+          className="vote-down"
+        >
           <i className="fa fa-thumbs-down text-danger" />
         </div>
       </div>
