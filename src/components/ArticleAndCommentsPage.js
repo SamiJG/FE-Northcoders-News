@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import HomepageHeader from './HomepageHeader';
 // import FilterBar from './FilterBar';
 import Comments from './Comments';
-import Login from './Login';
 
 class ArticleAndCommentPage extends Component {
   render() {
@@ -13,9 +12,8 @@ class ArticleAndCommentPage extends Component {
           <HomepageHeader />
         </div>
         {/* <FilterBar /> */}
-        <div className="container-fluid row">
+        <div className="container-fluid">
           <Comments match={match} />
-          <Login />
         </div>
       </div>
     );

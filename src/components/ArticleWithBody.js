@@ -44,20 +44,23 @@ class ArticleWithBody extends Component {
       users.find(user => user.username === created_by.username).avatar_url;
     return (
       <div
-        className="article text-left border border-warning container-fluid row m-1"
+        className="article text-left border border-warning container-fluid my-1"
         key={_id}
       >
-        <Voter id={_id} type="article" votes={votes} />
-        <img
-          className="user-avatar-thumbnail align-self-center m-2"
-          src={userImage}
-          alt="user avatar"
-          onError={e => {
-            e.target.src = 'https://keypointintelligence.com/img/anonymous.png';
-          }}
-        />
-        <div>
-          <p>{title}</p>
+        <div className="row align-items-center mx-1">
+          <Voter id={_id} type="article" votes={votes} />
+          <img
+            className="user-avatar-thumbnail align-self-center mx-4"
+            src={userImage}
+            alt="user avatar"
+            onError={e => {
+              e.target.src =
+                'https://keypointintelligence.com/img/anonymous.png';
+            }}
+          />
+          <div>
+            <p>{title}</p>
+          </div>
           <p>{body}</p>
           <p>
             {`${commentCount} comments`} |{' '}
@@ -81,7 +84,7 @@ class ArticleWithBody extends Component {
           <button
             onClick={() => this.addComment(_id)}
             type="button"
-            className="btn btn-info mt-1"
+            className="btn btn-info my-1"
           >
             Add Comment
           </button>

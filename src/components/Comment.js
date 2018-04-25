@@ -21,7 +21,7 @@ class Comment extends Component {
     const timeSincePosted = 'sometime';
     return (
       <div
-        className="comment text-left border border-warning container-fluid row "
+        className="comment text-left border border-warning container-fluid "
         key={_id}
       >
         <Voter id={_id} type="comment" votes={votes} />

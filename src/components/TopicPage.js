@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import TopicPageHeader from './TopicPageHeader';
 // import FilterBar from './FilterBar';
 import Articles from './Articles';
-import Login from './Login';
 
 class TopicPage extends Component {
   render() {
@@ -13,9 +12,8 @@ class TopicPage extends Component {
           <TopicPageHeader match={match} />
         </div>
         {/* <FilterBar /> */}
-        <div className="container-fluid row">
+        <div className="container-fluid ">
           <Articles match={match} />
-          <Login />
         </div>
       </div>
     );

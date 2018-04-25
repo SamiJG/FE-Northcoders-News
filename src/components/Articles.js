@@ -40,7 +40,7 @@ class Articles extends Component {
     const { match } = this.props;
     const topic = match.params.topic;
     return (
-      <div className="articles col-md-9">
+      <div className="articles">
         {match.path === '/' && this.getTopTenArticles(articles)}
         {/^\/topics\//.test(match.path) &&
           this.getArticlesByTopic(articles, topic)}

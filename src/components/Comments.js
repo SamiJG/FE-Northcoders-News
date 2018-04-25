@@ -24,7 +24,7 @@ class Comments extends Component {
     const commentCount = comments.length;
     const { match } = this.props;
     return comments[0] ? (
-      <div className="article-and-comments col-md-9">
+      <div className="article-and-comments">
         <div className="single-article bg-warning">
           <ArticleWithBody
             article={article}
@@ -33,15 +33,17 @@ class Comments extends Component {
           />
         </div>
         <h4 className="bg-dark text-light">Comments</h4>
-        {comments
-          .sort((a, b) => b.created_at - a.created_at)
-          .map(comment => (
-            <Comment
-              comment={comment}
-              key={comment._id}
-              refreshComments={this.fetchArticleAndComments}
-            />
-          ))}
+        <div>
+          {comments
+            .sort((a, b) => b.created_at - a.created_at)
+            .map(comment => (
+              <Comment
+                comment={comment}
+                key={comment._id}
+                refreshComments={this.fetchArticleAndComments}
+              />
+            ))}
+        </div>
       </div>
     ) : null;
   }
